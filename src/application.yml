@@ -1,5 +1,9 @@
 management:
   endpoint:
+    health:
+      showd-details: always
+    metrics:
+      enabled: true
     prometheus:
       enabled: true
   endpoints:
@@ -7,6 +11,8 @@ management:
       exposure:
         include: '*'
   metrics:
+    tags:
+      application: test
     export:
       prometheus:
         enabled: true
