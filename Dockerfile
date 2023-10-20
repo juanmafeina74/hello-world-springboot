@@ -12,7 +12,8 @@ RUN mvn package
 
 #pull base image
 
-FROM eclipse-temurin:11
+#FROM eclipse-temurin:11
+FROM registreimatges.sic.intranet.gencat.cat/gencatcloud/java:11.0.20-alpine-3.18
 
 #expose port 8080
 EXPOSE 8080
