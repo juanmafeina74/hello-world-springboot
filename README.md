@@ -16,7 +16,7 @@ Optional:
 
 ##### Clone source code from git
 ```
-git clone https://github.com/dstar55/docker-hello-world-spring-boot .
+git clone https://github.com/juanmafeina74/hello-world-springboot .
 ```
 
 ##### Build Docker image
@@ -72,60 +72,3 @@ Hello World
 docker-compose down
 ```
 
-### Deploy under the Kuberenetes cluster
-
-#### Prerequisite
-
-##### MiniKube
-
-Installed:
-[MiniKube](https://www.digitalocean.com/community/tutorials/how-to-use-minikube-for-local-kubernetes-development-and-testing)
-
-Start minikube with command:
-```
-minikube start
-```
-
-
-#### Retrieve and deploy application
-
-```
-kubectl create deployment hello-spring-boot --image=dstar55/docker-hello-world-spring-boot:latest
-```
-
-#### Expose deployment as a Kubernetes Service
-```
-kubectl expose deployment hello-spring-boot --type=NodePort --port=8080
-```
-
-#### Check whether the service is running
-```
-kubectl get service hello-spring-boot
-```
-
-response should something like:
-```
-NAME                TYPE       CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
-hello-spring-boot   NodePort   xx.xx.xxx.xxx   <none>        8080:xxxxx/TCP   59m
-```
-
-#### Retrieve URL for application(hello-spring-boot)
-```
-minikube service hello-spring-boot --url
-```
-
-response will be http..., e.g:
-```
-http://127.0.0.1:44963
-```
-
-#### Test application with ***curl*** command(note: port is randomly created)
-
-```
-curl 127.0.0.1:44963
-```
-
-response should be:
-```
-Hello World
-```
